@@ -1,0 +1,932 @@
+/*orange colour #e67e22 */
+
+
+
+/*-----------------------------------------*/
+/*BASIC SETUP*/
+/*-----------------------------------------*/
+* {
+    margin: 0;
+    padding: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    background-color: #fff;
+    /*this is actually white, but default is already white*/
+    font-family: 'lato', 'arial', san-serif;
+    font-size: 20px;
+    font-weight: 300;
+    color: #555;
+    text-rendering: optimizeLegibility;
+    /*making all fonts rendering in a "perfect" way*/
+
+    overflow-x: hidden;
+    /*The overflow-x property specifies whether to clip the content, add a scroll bar, or display overflow content of a block-level element, when it overflows at the left and right edges.*/
+}
+
+
+/*clear the float*/
+
+.clearfix {
+    zoom: 1
+}
+
+.clearfix:after {
+    content: '.';
+    clear: both;
+    display: block;
+    height: 0;
+    visibility: hidden;
+
+}
+
+
+
+/*-----------------------------------------*/
+/*REUSABLE COMPONENTS*/
+/*-----------------------------------------*/
+.row {
+    max-width: 1140px;
+    margin: 0 auto;
+
+}
+
+section {
+    padding: 80px 0;
+}
+
+.box {
+    padding: 1px;
+}
+
+/* we don't want to change the other classes in here, so we created another class called box <div class="col span-1-of-4 box"> */
+
+
+/*-----------------------------------------*/
+/*HEADER*/
+/*-----------------------------------------*/
+header {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.7)), to(rgba(0, 0, 0, 0.7))), url(img/hero-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url(img/hero-min.jpg);
+    background-size: cover;
+    /*the image will fill the whole width of the browser*/
+    background-position: center;
+    height: 100vh;
+    background-attachment: fixed;
+    /*the background image, the dish with asparagus etc, will stay fixed when we scroll*/
+
+}
+
+.hero-text-box {
+    position: absolute;
+    width: 1140px;
+    /*without specifying this width of this box, this would look like a somewhat square box, not a somewhat rectangular row*/
+    left: 50%;
+    top: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+
+.logo {
+    height: 100px;
+    width: auto;
+    float: left;
+    margin-top: 20px;
+}
+
+/*we don't want the black logo to normally appear*/
+
+.logo-black {
+    display: none;
+    height: 50px;
+    width: auto;
+    float: left;
+    margin: 5px 0;
+
+}
+
+
+
+
+
+
+/*MAIN NAVI*/
+
+.main-nav {
+    /* padding: 8px 0; this has to show up where the li and a are both selected, otherwise, there will be no padding */
+    float: right;
+    list-style: none;
+    margin-top: 55px;
+}
+
+.main-nav li {
+    display: inline-block;
+    /*because li is a block element, we want to change it to inline-block so they are next to each other*/
+    margin-left: 40px;
+}
+
+
+.main-nav li a:link,
+.main-nav li a:visited {
+    padding: 8px 0;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    font-size: 90%;
+    /*a percentage of the base font size which is 20 px*/
+    border-bottom: 2px solid transparent;
+    /*the border is not visible*/
+    -webkit-transition: border-bottom 0.2s;
+    transition: border-bottom 0.2s;
+}
+
+.main-nav li a:hover,
+.main-nav li a:active {
+    border-bottom: 2px solid #e67e22;
+    /*the border is visible when we hover*/
+
+}
+
+/*MOBILE NAVI*/
+
+.mobile-nav-icon {
+    float: right;
+    margin-top: 30px;
+    cursor: pointer;
+    /*because here the 'a' link does not have the href, therefore, the cursor is an arrow. so we have to specify the cursor to be pointer, so the cursor becomes a hand*/
+    display: none;
+}
+
+.mobile-nav-icon i {
+    font-size: 200%;
+    color: #fff;
+}
+
+/*STICKY NAVI*/
+
+.sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    /*we want the navigation bar, which has the logo on the left and the links on the right, to occupy the entire width of the screen; without specifying this, the nav bar will just be on the left side*/
+
+    background-color: rgba(255, 255, 255, 0.97);
+    /*this is a white with very little transparency*/
+
+    box-shadow: 0 2px 2px #efefef;
+    /*to make the sticky stands out a little, especially in the white background*/
+
+    z-index: 9999;
+    /*the navigation panel will be at the top, because it has the "highest" value*/
+}
+
+.sticky .main-nav {
+
+    margin-top: 18px;
+    /*original 55px*/
+}
+
+/*the main-nav found in sticky has a margin-top of 18px*/
+
+
+/*we want this only when the main-nav is inside of the sticky class*/
+.sticky .main-nav li a:link,
+.sticky .main-nav li a:visited {
+    padding: 16px 0;
+    /*increase the padding from 8px to 16px so that the line does not have a gap between it and the next section*/
+    color: #555;
+    /*the same colour, a dark grey, as the rest of the body of the site as defined under body in the css*/
+}
+
+/*the black logo to appear when inside the sticky, and the white logo not to appear*/
+.sticky .logo {
+    display: none;
+}
+
+.sticky .logo-black {
+    display: block;
+}
+
+
+/*-----------------------------------------*/
+/*HEADINGS*/
+/*-----------------------------------------*/
+h1,
+h2,
+h3 {
+
+    font-weight: 300;
+    text-transform: uppercase;
+
+
+}
+
+
+h1 {
+    margin-top: 0;
+    /*to get rid of the default margin, from normalize.css; otherwise there will be a gap between the top of h1 and the browser*/
+    margin-bottom: 20px;
+    color: #fff;
+    font-size: 240%;
+    /*240% of what is specified in html above, which was 20px*/
+    word-spacing: 4px;
+    letter-spacing: 1px;
+
+}
+
+h2 {
+    font-size: 180%;
+    /*240% of what is specified in html above, which was 20px*/
+    word-spacing: 2px;
+    text-align: center;
+    margin-bottom: 30px;
+    letter-spacing: 1px;
+
+}
+
+
+h3 {
+    font-size: 110%;
+    margin-bottom: 15px;
+
+}
+
+/*this is the orange line after h2*/
+h2:after {
+    display: block;
+    height: 2px;
+    width: 100px;
+    content: " ";
+    background-color: #e67e22;
+    margin: 0 auto;
+    margin-top: 30px;
+
+}
+
+/*-----------------------------------------*/
+/*PARAGRAPHS*/
+/*-----------------------------------------*/
+.long-copy {
+    line-height: 145%;
+    width: 70%;
+    margin-left: 15%;
+    /*to centre it, 15% on each side*/
+}
+
+
+.box p {
+    line-height: 145%;
+    font-size: 90%;
+}
+
+/*-----------------------------------------*/
+/*ICONS*/
+/*-----------------------------------------*/
+
+.icon-big {
+    font-size: 300%;
+    /*i changed to 300%, jonas had 350%*/
+    display: block;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.icon-small {
+    display: inline-block;
+    /* I want to see these (small icons) as inline-block so that I can assign them some width */
+    width: 30px;
+    text-align: center;
+    color: #e67e22;
+    font-size: 120%;
+    margin-right: 10px;
+
+    /*secrets to align text & icons*/
+    line-height: 120%;
+    vertical-align: middle;
+    margin-top: -5px;
+
+}
+
+/*-----------------------------------------*/
+/*LINKS*/
+/*-----------------------------------------*/
+
+a:link,
+a:visited {
+    color: #e67e22;
+    text-decoration: none;
+    padding-bottom: 1px;
+    border-bottom: 1px solid #e67e22;
+    -webkit-transition: border-bottom 0.2s, color 0.2s;
+    transition: border-bottom 0.2s, color 0.2s;
+}
+
+
+a:hover,
+a:active {
+    color: #555;
+    /*back to original colour*/
+    border-bottom: 1px solid transparent;
+    /*the border i.e. the underline, becomes transparent when hovered or clicked*/
+}
+
+/*here, I tried putting the normal round brackets, i.e. parenthesis around the above word, underline, and the link wouldn't work; don't put parenthesis in the comment*/
+
+
+/*-----------------------------------------*/
+/*BUTTONS*/
+/*-----------------------------------------*/
+/*button link and button visited will look the same, i.e. the button will not change color or anything after being clicked*/
+/*make the submit button the same as the rest of the buttons*/
+
+.btn:link,
+.btn:visited,
+input[type=submit] {
+    display: inline-block;
+    /*normal a element is in-line, but we change this to inline-block to give it padding*/
+    padding: 10px 30px;
+    font-weight: 300;
+    text-decoration: none;
+    /*to get rid of the underline*/
+    border-radius: 200px;
+    -webkit-transition: background-color 0.2s, border 0.2s, color 0.2s;
+    transition: background-color 0.2s, border 0.2s, color 0.2s;
+    /*so the background-color doesn't show up instantaneously*/
+
+}
+
+.btn-full:link,
+.btn-full:visited,
+input[type=submit]
+
+/*make the submit button the same as the rest of the buttons*/
+    {
+    background-color: #e67e22;
+    border: 1px solid #e67e22;
+    color: #fff;
+    margin-right: 15px;
+
+}
+
+.btn-ghost:link,
+.btn-ghost:visited {
+    border: 1px solid #e67e22;
+    color: #e67e22;
+
+}
+
+
+/*we want the button to look exactly the same when we hover it or when we click on it, that is, when it's active*/
+/*we also want to put hover and active, after link and visited*/
+.btn:hover,
+.btn:active,
+input[type=submit]:hover,
+input[type=submit]:active {
+    background-color: #e65d22;
+
+}
+
+
+.btn-full:hover,
+.btn-full:active {
+
+    border: 1px solid #e65d22;
+
+
+}
+
+.btn-ghost:hover,
+.btn-ghost:active {
+    border: 1px solid #e65d22;
+    color: #fff;
+
+}
+
+/*-----------------------------------------*/
+/*features*/
+/*-----------------------------------------*/
+
+.section-features .long-copy {
+    margin-bottom: 30px;
+}
+
+
+
+
+/*-----------------------------------------*/
+/*meals*/
+/*-----------------------------------------*/
+
+.section-meals {
+    padding: 0;
+}
+
+.meals-showcase {
+    list-style: none;
+    /*don't want the bullet point of unordered list*/
+    width: 100%;
+    /*100* of browser width*/
+}
+
+
+.meals-showcase li {
+    display: block;
+    float: left;
+    /*so the photos are side by side*/
+    width: 25%;
+    /*I have a ul list with 100% width
+and I want four elements inside of this
+to show side-by-side with the full width.
+So, with four <li> elements,
+each of them has to be 25% wide*/
+}
+
+/*this element with the class "meal-photo" has a width of 100%, means just that it has the exact width of its parent, which is .meals-showcase li. And we have also to say that it has a margin: zero, because the "normalize" file defines some margin for that element and so we have to overwrite that specifically*/
+
+.meal-photo {
+    background-color: #000;
+    /*change the background colour to black because it was white and if we change the opacity of the image to 70%, then the image would look very light*/
+    width: 100%;
+    margin: 0;
+    overflow: hidden;
+    /*we don't want these images to be bigger than their container, which is meal-photo.*/
+}
+
+/*To format the actual photo, to assure that the image is exactly as wide as its container, which is this element (.meal-photo)*/
+
+.meal-photo img {
+    opacity: 0.7;
+    width: 100%;
+    height: auto;
+    -webkit-transform: scale(1.15);
+    transform: scale(1.15);
+    /*making the image bigger*/
+    -webkit-transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: opacity 0.5s, -webkit-transform 0.5s;
+    transition: transform 0.5s, opacity 0.5s;
+    transition: transform 0.5s, opacity 0.5s, -webkit-transform 0.5s;
+    /*so it will transform from 1.03 to 1.15 and vice versa at a slower pace, and the opacity will also changes at a slower pace*/
+}
+
+.meal-photo img:hover {
+    opacity: 1;
+    /*when we hover, the opacity will change back to 100%, i.e. brighter*/
+    -webkit-transform: scale(1.03);
+    transform: scale(1.03);
+    /*goes back to original size when hovered, because scaling back to 1 will leave a white gap between the photos, and we don't really know why*/
+}
+
+/*-----------------------------------------*/
+/*how it works*/
+/*-----------------------------------------*/
+
+.section-steps {
+    background-color: #f4f4f4;
+}
+
+/*a subtle white colour, to separate the sections*/
+
+/*this is for the iphone image*/
+.steps-box:first-child {
+    text-align: right;
+    /*there is no text, but  text-align also works for in-line block element like img*/
+    padding-right: 3%;
+    /*more fluid than px*/
+    margin-top: 30px;
+}
+
+
+.steps-box:last-child {
+    padding-left: 3%;
+    margin-top: 70px;
+}
+
+
+
+.app-screen {
+    width: 40%;
+}
+
+.works-step {
+    margin-bottom: 50px;
+    /*so that each step has a space in between*/
+}
+
+
+.works-step:last-of-type {
+    margin-bottom: 80px;
+}
+
+/*the circles with numbers*/
+.works-step div {
+    color: #e67e22;
+    border: 2px solid #e67e22;
+    display: inline-block;
+    /*I want the inline-blocks because that way we can ensure that the element doesn't force a line break and so the number can be side by side with the text.*/
+
+    border-radius: 50%;
+    /*round*/
+    height: 55px;
+    width: 55px;
+    /*It's now a square and we want it to be a circle. And you probably remember how to do it. That's border-radius 50 percent. And we can now define the height of that element, let's say 50 pixel. And the width. Of course, if we want it to be a circle it has to be as high as it's wide.*/
+
+    text-align: center;
+    /*the number should be centered, text-align center.*/
+
+    padding: 5px;
+    float: left;
+    /*to make this text appear here on the side, and in order to do that we need to define a float property for that element.*/
+
+    font-size: 150%;
+    margin-right: 25px;
+}
+
+.btn-app:link,
+.btn-app:visited {
+    border: 0;
+}
+
+/*because we specified for the a links to have border, underneath the links section, but we don't want border here for the app buttons*/
+
+.btn-app img {
+    height: 50px;
+    width: auto;
+    margin-right: 10px;
+}
+
+
+/*-----------------------------------------*/
+/*Cities*/
+/*-----------------------------------------*/
+
+.box img {
+    width: 100%;
+    /*the image to be exactly as wide as its parent, the box*/
+    height: auto;
+    margin-bottom: 15px;
+
+}
+
+.city-feature {
+    margin-bottom: 5px;
+}
+
+/*-----------------------------------------*/
+/*Testimonials*/
+/*-----------------------------------------*/
+
+.section-testimonials {
+    background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.80)), to(rgba(0, 0, 0, 0.80))), url(img/back-customers-min.jpg);
+    background-image: linear-gradient(rgba(0, 0, 0, 0.80), rgba(0, 0, 0, 0.80)), url(img/back-customers-min.jpg);
+    /*just like in the header, from black to black with 70% transparency*/
+
+    background-size: cover;
+    /*the image will fill the whole width of the browser*/
+    color: #fff;
+    background-attachment: fixed;
+    /*the background image, the pizza, will stay fixed when we scroll*/
+}
+
+
+
+blockquote {
+    padding: 2%;
+    font-style: italic;
+    /*we can do this because the italic style was specified in html, google font*/
+
+    line-height: 145%;
+    position: relative;
+
+    /*When we make an element with absolute position
+we have to ensure that its parent
+has a relative position. This is the parent of the below*/
+
+    margin-top: 40px;
+    /*to give space between the quotation and the line above*/
+
+}
+
+blockquote:before {
+    content: "\201c";
+    /*special character for left double quotation mark, found it on google, under https://www.toptal.com/designers/htmlarrows/punctuation/left-double-quotation-mark/*/
+
+    font-size: 500%;
+
+    display: block;
+    /*we need to have to set a new line once again.
+So, we have to make this as a block element.*/
+
+    position: absolute;
+    /*n order to position this quotation mark exactly where we want it
+we need to define its top and left attributes
+because it is really the easiest way
+is to change this around using absolute positioning.*/
+
+    top: -5px;
+    left: -5px;
+}
+
+
+cite {
+    font-size: 90%;
+    margin-top: 25px;
+    display: block;
+    /*so the image which is inside, and the text, the author, will appear on the next line*/
+
+}
+
+cite img {
+    height: 50px;
+    border-radius: 45%;
+    margin-right: 10px;
+    vertical-align: middle;
+    /*so the image, that is the photo, and the author name will align such that the author name aligns with the middle of the author's photo*/
+}
+
+/*-----------------------------------------*/
+/*Sign up*/
+/*-----------------------------------------*/
+
+
+.section-plans {
+    background-color: #f4f4f4;
+}
+
+/*a subtle white colour, to separate the sections*/
+
+
+/* why I created this div inside of the column, because if I hadn't, I wouldn't be able to make the plan-box only 90% of the column, with the white background color. It would not have been possible to do this by just formatting this column span one of 3 or adding some box, or class, here, inside, the div column span one of 3*/
+
+.plan-box {
+    background-color: #fff;
+    /* just regular white */
+
+    border-radius: 5px;
+    width: 90%;
+    /*90 percent of the column span one of three*/
+    margin-left: 5%;
+    /*making it in the middle of the 90 percent, because the parent, the column was a 100 percent, the width of this plan box is 90% of the column, and to the left is 5 percent */
+
+    -webkit-box-shadow: 0px 2px 2px #efefef;
+
+    box-shadow: 0px 2px 2px #efefef;
+    /*x axis, y axis, blur, subtle colour*/
+
+}
+
+/*formatting the 3 divs inside the plan-box*/
+
+.plan-box div {
+    padding: 15px;
+    border-bottom: 1px solid #e8e8e8;
+
+}
+
+/*to give the first div, which contains the price a subtle colour*/
+.plan-box div:first-child {
+    background-color: #fcfcfc;
+
+    /* because the original border radius in plan-box was not visible, prob screen too small, we we do it here in the div*/
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+
+
+
+
+
+/*to centre the sign-up button, do this to the last child of the plan box, which is the last div which has the sign up button*/
+.plan-box div:last-child {
+    text-align: center;
+    border: 0;
+    /*don't want the border below the sign-up button*/
+}
+
+
+
+
+
+.plan-price {
+    font-size: 300%;
+    margin-bottom: 10px;
+    font-weight: 100;
+    /*this was in the head sector, the google fonts had 100 as the lowest option*/
+
+    color: #e67e22;
+}
+
+
+/*Now the thing is that this span here is a child of this plan-price, which has a font size of 300%. Now if we would say font size equals 100%, then this 100% would not be the base size of 20 pixels, but this 300% because it is the parent font size. So if we want a smaller font size, we have to choose a very small number like for instance 30%. So, we have 30% of these 300, and not of the initial 20 pixels.*/
+
+/*And another thing is we want the font weight back to 300 here, because once again, this is the parent element, and it says font weight is 100. So this element will inherit that value and so in order to put it back to 300*/
+
+.plan-price span {
+    font-size: 30%;
+    font-weight: 300;
+
+}
+
+
+.plan-price-meal {
+    font-size: 80%;
+
+}
+
+.plan-box ul {
+    list-style: none;
+    /*to get rid of the dot before the list*/
+
+
+}
+
+.plan-box ul li {
+    padding: 5px 0px;
+
+}
+
+
+
+/*-----------------------------------------*/
+/*Form*/
+/*-----------------------------------------*/
+
+.contact-form {
+    width: 60%;
+    margin: 0 auto;
+
+}
+
+
+input[type=text],
+input[type=email],
+select,
+textarea {
+    width: 100%;
+    padding: 7px;
+    border-radius: 3px;
+    border: 1px solid #ccc;
+
+}
+
+textarea {
+    height: 100px;
+}
+
+/*give some space around the checkbox, that is, the actual check square*/
+input[type=checkbox] {
+    margin: 10px 5px 10px 0;
+}
+
+
+/*To get rid of those borders, when we focus (click) on those elements; and the best thing of doing that is to get rid of it for all elements*/
+
+*:focus {
+    outline: none;
+}
+
+/*I checked using active instead of focus, did not work on active; blue borders still there if I changed it to active; so the click action here is focus, not active*/
+
+
+/*-----------------------------------------*/
+/*Footer*/
+/*-----------------------------------------*/
+
+footer {
+    background-color: #333;
+    padding: 50px;
+    font-size: 80%;
+}
+
+/*my observations:no bullet points, and float to the left/right inside of its container, col*/
+
+.footer-nav {
+    list-style: none;
+    float: left;
+}
+
+
+
+.social-links {
+    list-style: none;
+    float: right;
+}
+
+
+
+
+/*my observation: changing li to inline block because li is a block element, and we want to have them side by side*/
+
+
+.footer-nav li,
+.social-links li {
+    display: inline-block;
+    margin-right: 20px;
+}
+
+/*the icon is not all the way to the right side of the row. because of the margin right we defined of 20 pixels, so to get rid of that for the last child element*/
+
+.footer-nav li:last-child,
+.social-links li:last-child {
+    margin-right: 0;
+}
+
+.footer-nav li a:link,
+.footer-nav li a:visited,
+.social-links li a:link,
+.social-links li a:visited {
+    text-decoration: none;
+    border: 0;
+    color: #888888;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+.footer-nav li a:hover,
+.footer-nav li a:active {
+    color: #dddddd;
+}
+
+.social-links li a:link,
+.social-links li a:visited {
+    font-size: 160%;
+
+
+}
+
+
+
+.ion-logo-facebook,
+.ion-logo-twitter,
+.ion-logo-googleplus,
+.ion-logo-instagram {
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+}
+
+
+
+/*Social Media icon colours from https://www.designpieces.com/2012/12/social-media-colours-hex-and-rgb/ */
+
+.ion-logo-facebook:hover {
+    color: #3b5998;
+}
+
+.ion-logo-twitter:hover {
+    color: #55acee;
+}
+
+.ion-logo-googleplus:hover {
+    color: #dd4b39;
+}
+
+
+.ion-logo-instagram:hover {
+    color: #e95950;
+}
+
+
+
+footer p {
+    color: #888888;
+    text-align: center;
+    margin-top: 20px;
+
+
+}
+
+
+/*-----------------------------------------*/
+/*Animations*/
+/*-----------------------------------------*/
+
+/*To use the animation fadein for this section (.js--wp-1) in the get food fast, not fast food; we have to first make the things in this section disappear, and then reappear, using the fadein animation effect. Display-none, which we used for the navigation panel, will not work here, we use opacity instead*/
+
+.js--wp-1,
+.js--wp-2,
+.js--wp-3 {
+
+    opacity: 0;
+    -webkit-animation-duration: 1s;
+    /*done by going to edit, and hit auto prefix on selection*/
+    animation-duration: 1s;
+    /*because without this, animation happens too slowly*/
+}
+
+.js--wp-4 {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+}
+
+
+/*The element has these two classes AT THE SAME TIME, then the opacity is 1*/
+.js--wp-1.animated,
+.js--wp-2.animated,
+.js--wp-3.animated {
+    opacity: 1;
+}

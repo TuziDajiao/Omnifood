@@ -1,0 +1,309 @@
+/*big tablets to 1200px: with widths smaller than 1140px row*/
+
+@media only screen and (max-width:1200px) {
+
+    .hero-text-box {
+
+        width: 100%;
+        /*original 1140px*/
+
+        /*to create space between the text and the border of the browser*/
+        padding: 0 2%;
+
+    }
+
+    .row {
+        /*so there is a space between the text and the browser border*/
+        padding: 0 2%;
+    }
+
+}
+
+
+
+/*small tablets to big tablets: from 768px-1023px*/
+
+@media only screen and (max-width:1023px) {
+
+    body {
+        font-size: 18px;
+        /*original 20px*/
+    }
+
+    section {
+        padding: 60px 0;
+        /*original 80px 0*/
+    }
+
+
+    .long-copy {
+        line-height: 145%;
+
+        /*to make the paragraph look wider*/
+        width: 80%;
+        margin-left: 10%;
+    }
+
+    /*the steps-box, and works-step are the How It Works section*/
+
+    steps-box {
+        margin-top: 10px;
+        /*original one had 30px*/
+    }
+
+    .steps-box:last-child {
+
+        margin-top: 40px;
+        /*original one had 70px*/
+        /*Jonas said change to 10px, but it would be higher than the app img, so I changed it to 40px instead*/
+    }
+
+
+    .works-step {
+        margin-bottom: 40px;
+        /*original one had 50px*/
+    }
+
+
+    .works-step:last-of-type {
+        margin-bottom: 60px;
+        /*original one had 80px*/
+        /*Jonas had typo in the video, he typed works-steps*/
+    }
+
+    .app-screen {
+        width: 50%;
+        /*original one had 40%*/
+    }
+
+    .icon-small {
+        width: 17px;
+        /*original width was 30px*/
+
+        margin-right: 5px;
+        /*original one had 10px for margin-right*/
+    }
+
+    .city-feature {
+        font-size: 90%;
+    }
+
+    .plan-box {
+        width: 100%;
+        /*original was 90%*/
+        margin-left: 0;
+        /*original was 5% to center*/
+    }
+
+    .plan-price {
+        font-size: 250%;
+        /*original was 300%*/
+    }
+
+    .contact-form {
+        width: 80%;
+        /*original was 60%*/
+    }
+
+}
+
+/*small phones to small tablets: from 481px-767px*/
+
+@media only screen and (max-width:767px) {
+
+    body {
+        font-size: 16px;
+        /*original 20px*/
+    }
+
+    section {
+        padding: 30px 0;
+        /*original 80px 0*/
+    }
+
+    .hero-text-box,
+    .row {
+        padding: 0 4%;
+    }
+
+    .col {
+        width: 100%;
+        /*the columns will not be side by side, but stacked on top of each other*/
+
+        margin: 0 0 4% 0;
+        /*original from the grid file, margin: 1% 0 1% 1.6%*/
+    }
+
+    /*Previously we made the navigation links disappear because they were all messed up, but now we are making it dispear, because we only want it to appear when we click the 3 horizontal bars icon*/
+    .main-nav {
+        display: none;
+
+    }
+
+
+    .mobile-nav-icon {
+        display: inline-block;
+    }
+
+    .main-nav {
+        float: left;
+        margin-top: 35px;
+        /*original 55px*/
+
+        margin-left: 25px;
+    }
+
+    /*the navigation panel was previously displayed as in-line block, i.e. side by side, here we watn it stacked*/
+    .main-nav li {
+        display: block;
+    }
+
+
+    .main-nav li a:link,
+    .main-nav ii a:visited {
+        display: block;
+        border: 0;
+        padding: 10px, 0;
+        font-size: 100%;
+
+    }
+
+
+    .sticky .main-nav {
+
+        margin-top: 10px;
+        /*original 55px, then we changed to 18px, now to 10px*/
+    }
+
+    /*the main-nav found in sticky has a margin-top of 18px*/
+
+
+    /*we want this only when the main-nav is inside of the sticky class*/
+    .sticky .main-nav li a:link,
+    .sticky .main-nav li a:visited {
+        padding: 10px 0;
+        /*increased the padding from 8px to 16px, now change to 10px*/
+
+    }
+
+    .sticky .mobile-nav-icon i {
+        color: #555;
+    }
+
+    /*the same colour, a dark grey, as the rest of the body of the site as defined under body in the css*/
+
+
+    .sticky .mobile-nav-icon {
+        margin-top: 10px;
+    }
+
+    /*original 30px*/
+
+
+
+    h1 {
+        font-size: 180%;
+    }
+
+    /*original was 240%*/
+
+
+    h2 {
+        font-size: 150%;
+    }
+
+    /*original was 180%*/
+
+
+    /*to make the long copy paragraph wider*/
+    .long-copy {
+        width: 100%;
+        /*original 70%*/
+
+        margin-left: 0;
+        /*original 15%*/
+    }
+
+    .app-screen {
+        width: 40%;
+        /*change back to original one had 40%*/
+    }
+
+
+
+    /*this is for the iphone image*/
+    .steps-box:first-child {
+        text-align: center;
+        /*there is no text, but  text-align also works for in-line block element like img*/
+    }
+
+
+    /*to make the circles with numbers smaller*/
+    .works-step div {
+
+        height: 35px;
+        /*original 55px, Jonas changed it to 40px but mine still looks bigger than the text that follows and pushes the text so the lines don't align*/
+
+        width: 35px;
+        /*original 55px, Jonas changed it to 40px*/
+
+        padding: 4px;
+        /*original 4px*/
+
+        font-size: 120%;
+        /*original 150%*/
+
+        margin-right: 15px;
+        /*original 25px*/
+    }
+
+    /*to get rid of the white space between the steps in the How it works section*/
+    .works-step {
+        margin-bottom: 20px;
+        /*original one had 50px*/
+    }
+
+
+    .works-step:last-of-type {
+        margin-bottom: 20px;
+        /*original one had 80px*/
+
+    }
+
+
+}
+
+
+
+
+/*small phones: from 0px-480px*/
+
+@media only screen and (max-width:480px) {
+
+    section {
+        padding: 25px 0;
+        /*original 80px 0*/
+    }
+
+    .contact-form {
+        width: 100%;
+        /*original was 60%*/
+    }
+
+    /*to make the circles with numbers bigger, because the text the follows go under the circle*/
+    .works-step div {
+
+        height: 40px;
+        /*original 55px, Jonas changed it to 40px but mine still looks bigger than the text that follows and pushes the text so the lines don't align,so I changed to 35px for the screen size max 767px, but for this smallest screen size max 480px, I had to change it back to what Jonas had, 40px*/
+
+        width: 40px;
+        /*original 55px, Jonas changed it to 40px*/
+
+
+    }
+
+
+
+
+
+}
